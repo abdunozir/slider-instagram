@@ -1,5 +1,5 @@
 let hero__slider = document.querySelector('.hero__slider');
-let story = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+let story = [1, 2, 3, 4, 5, 6, 7];
 
 let sliderCards = '';
 
@@ -20,6 +20,7 @@ function cardClicked(e) {
     active.classList.remove('active');
   }
   e.target.classList.add('active');
+  moveContainer(e.target.classList[1]);
   moveContainer(e.target.classList[1]);
 }
 
@@ -49,25 +50,31 @@ function pre() {
   if (currentCard !== 1) {
     currentCard = currentCard -= 1;
   }
-  moveContainer(currentCard);
+
   let active = document.querySelector('.active');
   if (active !== null) {
     active.classList.remove('active');
   }
   let el = document.querySelector(`.id${currentCard}`);
-  el.classList.add('active');
+  if (el !== null) {
+    moveContainer(currentCard);
+    el.classList.add('active');
+  }
 }
 
 function next() {
   if (currentCard !== story[story.length - 1]) {
     currentCard = currentCard += 1;
   }
-  moveContainer(currentCard);
+
   let active = document.querySelector('.active');
   if (active !== null) {
     active.classList.remove('active');
   }
   let el = document.querySelector(`.id${currentCard}`);
-
-  el.classList.add('active');
+  console.log(el);
+  if (el !== null) {
+    moveContainer(currentCard);
+    el.classList.add('active');
+  }
 }
